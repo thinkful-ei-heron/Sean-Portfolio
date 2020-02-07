@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { Route, NavLink } from 'react-router-dom'
+import Landing from './Landing'
 import About from './About'
 import Projects from './Projects'
 import Contact from './Contact'
@@ -14,19 +16,50 @@ class Home extends Component {
         this.setState({page:newPage})
     }
 
+    renderRoutes(){
+        return(
+            <div>
+                <Route
+                    exact
+                    path='/'
+                    component={Landing}
+                />
+                <Route
+                    path='/about'
+                    component={About}
+                />
+                <Route 
+                    path='/projects'
+                    component={Projects}
+                />
+                <Route
+                    path='/contact'
+                    component={Contact}
+                />
+            </div>
+        )
+    }
+
     render() {
 
         return(
             <div className='Home'>
                 <nav className='navLinks'>
-                    <h3>Home</h3>
-                    <h3 className='borderedLink'>About</h3>
-                    <h3 className='borderedLink'>Projects</h3>
-                    <h3>Contact</h3>
+                    <NavLink className='homeNavLink' to={`/`}>
+                        <h3>Home</h3>
+                    </NavLink>
+                    <NavLink className='aboutNavLink' to={`/about`}>
+                        <h3 className='borderedLink'>About</h3>
+                    </NavLink>
+                    <NavLink className='projectsNavLink' to={`/projects`}>
+                        <h3 className='borderedLink'>Projects</h3>
+                    </NavLink>
+                    <NavLink className='contactNavLink' to={`/contact`}>
+                        <h3>Contact</h3>
+                    </NavLink>       
                 </nav>
                 <main>
-                    {this.state.page==='home' ? <p>Hello! I'm Sean, a full-stack web developer based out of Washington D.C. .</p> : null}
-                    <Contact />
+                    {this.renderRoutes()}
                 </main>
             </div>
         )
