@@ -1,0 +1,27 @@
+*{
+    box-sizing: border-box;
+}
+
+.About{
+    display: flex;
+    flex-direction: column;
+    height:40vh;
+    justify-content: space-evenly;
+    margin-top:12vh;
+    padding-left: 5vw;
+    padding-right:5vw;
+}
+
+.About p{
+    margin:1vh;
+    padding:1vh;
+    font-weight: bold;
+    font-size:1.4em;
+}
+
+@media only screen and (max-width:450px){
+
+    .About p{
+        font-size: 0.5em;
+    }
+}
